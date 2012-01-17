@@ -1,9 +1,10 @@
 require "net/http"
 require "uri"
-require "gitio/version"
-require "gitio/exceptions"
 
 module Gitio
+  autoload :VERSION,    "gitio/version"
+  autoload :Error,      "gitio/errors"
+  autoload :CLI,        "gitio/cli"
 
   def self.shorten(url, code=nil)
     Net::HTTP.start "git.io", 80 do |http|
