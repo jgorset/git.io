@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Johannes Gorset"]
   s.email       = ["jgorset@gmail.com"]
   s.homepage    = "http://github.com/jgorset/git.io"
-  s.summary     = "Command-line client for GitHub's URL shortener"
-  s.description = "Command-line client for GitHub's URL shortener"
+  s.summary     = "Command-line client for git.io"
+  s.description = "Command-line client for GitHub's URL shortener, git.io."
 
   s.rubyforge_project = "git.io"
 
