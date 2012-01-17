@@ -1,17 +1,22 @@
 require "gitio"
+require "support"
 
 describe Gitio::CLI do
-  
-  before do
-    $stdout = StringIO.new
-  end
 
   it "accepts an URL" do
-    Gitio::CLI.new ["http://github.com/jgorset/git.io"]
+    output = capture_stdout do
+      Gitio::CLI.new ["https://github.com/jgorset/git.io"]
+    end
+
+    output.should eq "http://git.io/git.io\n"
   end
 
   it "accepts an URL with a code" do
-    Gitio::CLI.new ["http://github.com/jgorset/git.io", "git.io"]
+    output = capture_stdout do
+      Gitio::CLI.new ["https://github.com/jgorset/git.io", "git.io"]
+    end
+
+    output.should eq "http://git.io/git.io\n"
   end
 
 end
