@@ -4,7 +4,7 @@ require "gitio/version"
 
 Gem::Specification.new do |s|
   s.name        = "git.io"
-  s.version     = Git.io::VERSION
+  s.version     = Gitio::VERSION
   s.authors     = ["Johannes Gorset"]
   s.email       = ["jgorset@gmail.com"]
   s.homepage    = ""
