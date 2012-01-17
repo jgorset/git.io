@@ -6,6 +6,11 @@ module Gitio
   autoload :Error,      "gitio/errors"
   autoload :CLI,        "gitio/cli"
 
+  # Shorten the given <tt>url</tt> with git.io.
+  #
+  # If <tt>code</tt> is given, git.io will attempt
+  # to use it in place of a random value for the
+  # shortened URL.
   def self.shorten(url, code=nil)
     Net::HTTP.start "git.io", 80 do |http|
       request = Net::HTTP::Post.new "/"
@@ -28,6 +33,7 @@ module Gitio
     end
   end
 
+  # Expand the given <tt>url</tt> to its original form.
   def self.lengthen(url)
     url = URI(url)
 
