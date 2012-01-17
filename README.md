@@ -1,5 +1,7 @@
 # Git.io
 
+[![Build Status](https://secure.travis-ci.org/jgorset/git.io.png)](http://travis-ci.org/jgorset/git.io)
+
 Command-line client for GitHub's URL shortener.
 
 ## Usage
