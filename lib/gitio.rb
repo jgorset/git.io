@@ -1,8 +1,10 @@
 require "net/http"
 require "uri"
 require "gitio/version"
+require "gitio/exceptions"
 
 module Gitio
+
   def self.shorten(url, code=nil)
     Net::HTTP.start "git.io", 80 do |http|
       request = Net::HTTP::Post.new "/"
@@ -16,7 +18,12 @@ module Gitio
       request.body = URI.encode_www_form(query)
 
       response = http.request(request)
-      return response["Location"]
+
+      if short_url = response["Location"]
+        return short_url
+      else
+        raise Error, response.body
+      end
     end
   end
 
@@ -30,4 +37,5 @@ module Gitio
       return response["Location"]
     end
   end
+
 end

@@ -20,4 +20,10 @@ describe Gitio do
     short_url.should eq "http://git.io/git.io"
   end
 
+  it "should raise an exception upon trying to shorten an invalid URL" do
+    original_url = "http://google.com"
+
+    expect { Gitio.shorten(original_url) }.to raise_error Gitio::Error
+  end
+
 end
