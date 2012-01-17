@@ -5,7 +5,11 @@ module Gitio
   class CLI
 
     def initialize(arguments)
-      url, options = parse!(arguments)
+      begin
+        url, options = parse!(arguments)
+      rescue OptionParser::InvalidOption => e
+        error e
+      end
 
       if options[:code]
         puts Gitio.shorten(url, options[:code])
