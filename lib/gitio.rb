@@ -16,17 +16,17 @@ module Gitio
       request = Net::HTTP::Post.new "/"
       request.content_type = "application/x-www-form-urlencoded"
 
-      query = {}.tap do |hash|
-        hash[:url] = url
-        hash[:code] = code if code
+      query = Hash.new.tap do |h|
+        h[:url] = url
+        h[:code] = code if code
       end
 
       request.body = URI.encode_www_form(query)
 
       response = http.request(request)
 
-      if short_url = response["Location"]
-        return short_url
+      if response.key? "Location"
+        return response["Location"]
       else
         raise Error, response.body
       end

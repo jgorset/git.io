@@ -5,13 +5,9 @@ module Gitio
   class CLI
 
     def initialize(arguments)
-      begin
-        url, options = parse!(arguments)
-      rescue OptionParser::InvalidOption => e
-        error e
-      end
+      url, options = parse!(arguments)
 
-      if options[:code]
+      if options.include? :code
         puts Gitio.shorten(url, options[:code])
       else
         puts Gitio.shorten(url)
@@ -40,8 +36,11 @@ module Gitio
       error "You must specify an URL to shorten" if arguments.empty?
 
       [arguments.first, options]
+    rescue OptionParser::InvalidOption => e
+      error e
     end
 
+    # Print <tt>message</tt> and exit with the given <tt>code</tt>.
     def error(message, code=1)
       puts "git.io: #{message}"
       exit code
