@@ -17,7 +17,7 @@ describe Gitio do
 
     short_url = Gitio.shorten(original_url, "git.io")
 
-    short_url.should eq "http://git.io/git.io"
+    short_url.should eq "http://git.io/Vhp6yw"
   end
 
   it "should raise an exception upon trying to shorten an invalid URL" do
