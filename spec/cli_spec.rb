@@ -8,7 +8,7 @@ describe Gitio::CLI do
       Gitio::CLI.new ["https://github.com/jgorset/git.io"]
     end
 
-    output.should eq "http://git.io/Vhp6yw\n"
+    output.should eq "https://git.io/Vhp6yw\n"
   end
 
   it "accepts an URL with a code" do
@@ -16,7 +16,7 @@ describe Gitio::CLI do
       Gitio::CLI.new ["https://github.com/jgorset/git.io", "git.io"]
     end
 
-    output.should eq "http://git.io/Vhp6yw\n"
+    output.should eq "https://git.io/Vhp6yw\n"
   end
 
 end

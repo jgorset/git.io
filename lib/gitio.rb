@@ -12,7 +12,7 @@ module Gitio
   # to use it in place of a random value for the
   # shortened URL.
   def self.shorten(url, code=nil)
-    Net::HTTP.start "git.io", 80 do |http|
+    Net::HTTP.start "git.io", 443, :use_ssl => true do |http|
       request = Net::HTTP::Post.new "/"
       request.content_type = "application/x-www-form-urlencoded"
 
@@ -37,7 +37,7 @@ module Gitio
   def self.lengthen(url)
     url = URI(url)
 
-    Net::HTTP.start url.host, 80 do |http|
+    Net::HTTP.start url.host, 443, :use_ssl => true do |http|
       request = Net::HTTP::Get.new url.path
 
       response = http.request(request)
